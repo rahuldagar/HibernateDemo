@@ -1,3 +1,10 @@
 .idea/
 HibernateDemo.iml
 target/*
+/target/
+.classpath
+.metadata/
+.project
+.settings/
+HibernateDemo.eml
+HibernateDemo.userlibraries
