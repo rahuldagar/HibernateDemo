@@ -17,8 +17,8 @@ public class App
     public static void main( String[] args )
     {
         Alien alien  = new Alien();
-        alien.setName("alexsky");
-        alien.setTech("java");
+        alien.setName("Einstein");
+        alien.setTech("C++");
         
         // agenda : save(alien);
         // save belongs to Session interface in hibernate
@@ -36,6 +36,9 @@ public class App
         // since 'buildSessionFactory' is deprecated, use this:
         // ServiceRegistry reg = new ServiceRegistryBuilder().apply(configuration.getProperties()).buildServiceRegistry();
         // SessionFactory sf = configuration.buildSessionFactory(reg);
+        
+        // use this in hibernate.cfg.xml file to see how hibernate internally implements sql queries
+        // <property name="show_sql">true</property>
         
         // to save data, u need to follow ACID properties : Atomicity, Consistency, Isolation & Durability
         Transaction tx = session.beginTransaction();
