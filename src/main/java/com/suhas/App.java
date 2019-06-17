@@ -16,31 +16,24 @@ public class App
 {
     public static void main( String[] args )
     {
-        Alien alien  = new Alien();
-        alien.setName("Einstein");
-        alien.setTech("C++");
+    		// changes made in cfg file
+    		/* <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+      	<property name="hbm2ddl.auto">create</property> */
+    	
+    		Alien alien  = new Alien();
+    		alien.setTech("C++");
+    		alien.setAlienid(101);
+    		
+    		AlienName alienName = new AlienName();
+    		alienName.setFname("Shiva");
+    		alienName.setMname("Venkata");
+    		alienName.setLname("Iyer");
+    		
+        alien.setFullName(alienName);
         
-        // agenda : save(alien);
-        // save belongs to Session interface in hibernate
-        // To instantiate Session object, we need to class which implements session, so we use SessionFactory
-        // But, Again, SessionFactory is an Interface, check for class which implements
-        // Configuration is the class which implements SessionFactory
-    
-        // .configure() to make use of 'hibernate.cfg.xml', .addAnnotatedClass() to specify which entity you are working with
-        // Exception: No identifier specified for entity: com.suhas.Alien : No primary key mentioned in alien class
         Configuration configuration = new Configuration().configure().addAnnotatedClass(Alien.class);
-        
         SessionFactory sf = configuration.buildSessionFactory();
         Session session = sf.openSession();
-        
-        // since 'buildSessionFactory' is deprecated, use this:
-        // ServiceRegistry reg = new ServiceRegistryBuilder().apply(configuration.getProperties()).buildServiceRegistry();
-        // SessionFactory sf = configuration.buildSessionFactory(reg);
-        
-        // use this in hibernate.cfg.xml file to see how hibernate internally implements sql queries
-        // <property name="show_sql">true</property>
-        
-        // to save data, u need to follow ACID properties : Atomicity, Consistency, Isolation & Durability
         Transaction tx = session.beginTransaction();
         session.save(alien);
         tx.commit();
