@@ -8,3 +8,4 @@ target/*
 .settings/
 HibernateDemo.eml
 HibernateDemo.userlibraries
+src/main/java/hibernate.cfg.xml

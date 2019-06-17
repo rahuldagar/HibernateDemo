@@ -2,6 +2,7 @@ package com.suhas;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 /**
@@ -22,9 +23,15 @@ public class App
         // But, Again, SessionFactory is an Interface, check for class which implements
         // Configuration is the class which implements SessionFactory
     
-        Configuration configuration = new Configuration();
+        // .configure() to make use of 'hibernate.cfg.xml', .addAnnotatedClass() to specify which entity you are working with
+        // Exception: No identifier specified for entity: com.suhas.Alien : No primary key mentioned in alien class
+        Configuration configuration = new Configuration().configure().addAnnotatedClass(Alien.class);
         SessionFactory sf = configuration.buildSessionFactory();
         Session session = sf.openSession();
+        
+        // to save data, u need to follow ACID properties : Atomicity, Consistency, Isolation & Durability
+        Transaction tx = session.beginTransaction();
         session.save(alien);
+        tx.commit();
     }
 }

@@ -1,6 +1,11 @@
 package com.suhas;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Alien {
+	@Id
 	private int Alienid;
 	private String name;
 	private String tech;
