@@ -1,8 +1,12 @@
 package com.suhas;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
+
 
 @Entity
 public class Student {
@@ -10,15 +14,16 @@ public class Student {
 	private int rollno;
 	private String name;
 	private int marks;
-	@OneToOne
-	private Laptop Laptop;
+	// One student will have many laptops
+	@OneToMany
+	private List<Laptop> Laptops = new ArrayList<>();
 
-	public Laptop getLaptop() {
-		return Laptop;
+	public List<Laptop> getLaptops() {
+		return Laptops;
 	}
 
-	public void setLaptop(Laptop laptop) {
-		Laptop = laptop;
+	public void setLaptops(List<Laptop> laptops) {
+		Laptops = laptops;
 	}
 
 	@Override
