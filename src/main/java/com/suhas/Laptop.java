@@ -1,24 +1,27 @@
 package com.suhas;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Laptop {
 	@Id
 	private int lid;
 	private String lname;
-	// this avoids extra table student_laptop
-	@ManyToOne
-	private Student student;
+	@ManyToMany
+	private List<Student> students = new ArrayList<Student>();
 	
-	public Student getStudent() {
-		return student;
+	public List<Student> getStudents() {
+		return students;
 	}
-	public void setStudent(Student student) {
-		this.student = student;
+	public void setStudents(List<Student> students) {
+		this.students = students;
 	}
+	
 	public int getLid() {
 		return lid;
 	}

@@ -2,11 +2,9 @@ package com.suhas;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Student {
@@ -15,7 +13,7 @@ public class Student {
 	private String name;
 	private int marks;
 	// One student will have many laptops
-	@OneToMany(mappedBy = "student")
+	@ManyToMany(mappedBy = "students")
 	private List<Laptop> Laptops = new ArrayList<>();
 
 	public List<Laptop> getLaptops() {
