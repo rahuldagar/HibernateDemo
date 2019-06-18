@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Laptop {
@@ -14,7 +15,15 @@ public class Laptop {
 	private String lname;
 	@ManyToMany
 	private List<Student> students = new ArrayList<Student>();
+	@ManyToOne
+	private Alien alien;
 	
+	public Alien getAlien() {
+		return alien;
+	}
+	public void setAlien(Alien alien) {
+		this.alien = alien;
+	}
 	public List<Student> getStudents() {
 		return students;
 	}
