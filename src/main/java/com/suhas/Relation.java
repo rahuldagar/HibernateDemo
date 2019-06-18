@@ -23,6 +23,8 @@ public class Relation {
 		student.getLaptops().add(laptop);
 		student.getLaptops().add(laptop2);
 		
+		laptop.setStudent(student);
+		
 		Configuration configuration = new Configuration().configure().addAnnotatedClass(Student.class).addAnnotatedClass(Laptop.class);
 		
 		SessionFactory sf = configuration.buildSessionFactory();
@@ -33,29 +35,12 @@ public class Relation {
     tx.commit();
     
     /*
-     mysql> select * from student;
-			+--------+-------+-------+
-			| rollno | marks | name  |
-			+--------+-------+-------+
-			|      1 |    50 | Suhas |
-			+--------+-------+-------+
-			1 row in set (0.00 sec)
-			
-			mysql> select * from laptop;
-			+-----+-------+
-			| lid | lname |
-			+-----+-------+
-			| 101 | Dell  |
-			+-----+-------+
-			1 row in set (0.00 sec)
-			
-			mysql> select * from student_laptop;
-			+----------------+-------------+
-			| Student_rollno | Laptops_lid |
-			+----------------+-------------+
-			|              1 |         101 |
-			|              1 |         102 |
-			+----------------+-------------+
+     mysql> select * from laptop;
+			+-----+-------+----------------+
+			| lid | lname | student_rollno |
+			+-----+-------+----------------+
+			| 101 | Dell  |              1 |
+			+-----+-------+----------------+
     */
 	}
 }

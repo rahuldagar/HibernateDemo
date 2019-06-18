@@ -15,7 +15,7 @@ public class Student {
 	private String name;
 	private int marks;
 	// One student will have many laptops
-	@OneToMany
+	@OneToMany(mappedBy = "student")
 	private List<Laptop> Laptops = new ArrayList<>();
 
 	public List<Laptop> getLaptops() {
