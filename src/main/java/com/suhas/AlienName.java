@@ -4,6 +4,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class AlienName {
+	// you use @Embeddable annotation to embed your object inside another table
 	private String fname;
 	private String mname;
 	private String lname;
