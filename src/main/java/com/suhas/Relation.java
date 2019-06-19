@@ -23,7 +23,7 @@ public class Relation {
 		student.getLaptops().add(laptop);
 		student.getLaptops().add(laptop2);
 		
-		laptop.getStudents().add(student);
+		//laptop.getStudents().add(student);
 		
 		Configuration configuration = new Configuration().configure().addAnnotatedClass(Student.class).addAnnotatedClass(Laptop.class);
 		

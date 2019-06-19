@@ -13,8 +13,6 @@ public class Laptop {
 	@Id
 	private int lid;
 	private String lname;
-	@ManyToMany
-	private List<Student> students = new ArrayList<Student>();
 	@ManyToOne
 	private Alien alien;
 	
@@ -24,13 +22,6 @@ public class Laptop {
 	public void setAlien(Alien alien) {
 		this.alien = alien;
 	}
-	public List<Student> getStudents() {
-		return students;
-	}
-	public void setStudents(List<Student> students) {
-		this.students = students;
-	}
-	
 	public int getLid() {
 		return lid;
 	}
