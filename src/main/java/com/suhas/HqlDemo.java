@@ -1,7 +1,10 @@
 package com.suhas;
 
 import java.util.List;
+import java.util.Map;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -60,6 +63,25 @@ public class HqlDemo {
     query6.setParameter("c", cutoff);
     long totalMarksDynamic2 = (long) query5.uniqueResult();
     System.out.println("Total marks : "+totalMarksDynamic2);
+    
+    // Example 7
+    // using native sql queries
+    SQLQuery squery = session.createSQLQuery("select * from graduate where marks > 60");
+    squery.addEntity(Graduate.class); // without this line, you'll be returned obj reference (hash values), also we get entire object
+    List<Graduate> grads = squery.list(); 
+    for (Graduate nativeGrad : grads) {
+			System.out.println(nativeGrad);
+		}
+    
+    // Example 8
+    // using native sql queries
+    SQLQuery squery1 = session.createSQLQuery("select name, marks from graduate where marks > 60");
+    squery1.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP); // convert output into map format
+    List gs = squery1.list(); 
+    for (Object obj : gs) {
+    	Map m = (Map)obj;
+			System.out.println(m.get("name") + " : " + m.get("marks"));
+		}
     
     session.getTransaction().commit();
 	}
