@@ -40,9 +40,9 @@ public class EagerVsLazy {
     // if below three lines of code is not there, we need to fetch the data like this:
     // select laptop.lname from laptop inner join alien on laptop.alien_aid=alien.aid where alien.aid = 102;
     // for a1.fetLaptops();
-    alien.getLaptops().add(l1);
+    /*alien.getLaptops().add(l1);
     alien.getLaptops().add(l2);
-    alien2.getLaptops().add(l3);
+    alien2.getLaptops().add(l3);*/
     
     Configuration configuration = new Configuration().configure().addAnnotatedClass(Alien.class).addAnnotatedClass(Laptop.class);
     SessionFactory sf = configuration.buildSessionFactory();
@@ -59,10 +59,10 @@ public class EagerVsLazy {
     // only when asked for, laptop query is triggered for alien
     // what if i want all laptops of alien object when i do get an alien like above line
     // do fetch = FetchType.EAGER in ALien.java for Eager Loading
-    List<Laptop> a1Laptops = a1.getLaptops();
+    /*List<Laptop> a1Laptops = a1.getLaptops();
     for (Laptop laptop : a1Laptops) {
 			System.out.println(laptop);
-		}
+		}*/
     tx.commit();
 
 	}

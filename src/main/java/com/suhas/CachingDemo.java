@@ -25,5 +25,12 @@ public class CachingDemo {
     session2.getTransaction().commit();
     
     // Now observer that two queries are fired for two different transactions
+    // download dependencies from :
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-ehcache/5.3.7.Final
+    // https://mvnrepository.com/artifact/net.sf.ehcache/ehcache/2.10.4
+    // <property name="hibernate.cache.use_second_level_cache">true</property> in hibernate.cfg.xml
+    // make sure both hibernate version & hibernate-ehcache versions are same in dependency
+    // add @Cache and @Cacheble in ALien.java
+    
 	}
 }

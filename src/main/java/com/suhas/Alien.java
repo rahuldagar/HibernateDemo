@@ -2,26 +2,25 @@ package com.suhas;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 @Entity
+@Cacheable
+@Cache(usage=CacheConcurrencyStrategy.READ_ONLY)
 public class Alien {
 	@Id
 	private int aid;
 	private String name;
 	private String tech;
-	@OneToMany(mappedBy = "alien", fetch = FetchType.EAGER)
-	private List<Laptop> laptops = new ArrayList<Laptop>();
 	
-	public List<Laptop> getLaptops() {
-		return laptops;
-	}
-	public void setLaptops(List<Laptop> laptops) {
-		this.laptops = laptops;
-	}
 	@Override
 	public String toString() {
 		return "Alien [Alienid=" + aid + ", fullName=" + name + ", tech=" + tech + "]";
